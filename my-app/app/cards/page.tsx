@@ -55,12 +55,12 @@ export default function CardsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 p-8">
+    <div className="min-h-screen bg-linear-to-br from-slate-900 to-slate-800 p-8">
       <h1 className="text-5xl font-bold text-white mb-2 text-center">Select Your Traits</h1>
       <p className="text-gray-400 text-center mb-4">Choose up to {MAX_TRAITS} traits that match you</p>
       <p className="text-gray-500 text-center mb-12">Selected: {selectedTraits.length}/{MAX_TRAITS}</p>
       
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 max-w-7xl mx-auto mb-16">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 max-w-full justify-items-center mb-16">
         {traits.map(trait => (
           <Card
             key={trait}
@@ -79,7 +79,7 @@ export default function CardsPage() {
           className={`px-12 py-4 rounded-lg font-semibold text-lg transition-all duration-200 ${
             selectedTraits.length === 0
               ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
-              : 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:shadow-2xl hover:scale-105'
+              : 'bg-linear-to-r from-blue-500 to-purple-600 text-white hover:shadow-2xl hover:scale-105'
           }`}
         >
           Find My Career Match

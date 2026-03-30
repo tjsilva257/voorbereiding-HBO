@@ -4,7 +4,7 @@ import Button from '@/components/Button';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex flex-col items-center justify-center text-center px-4">
+    <div className="min-h-screen bg-linear-to-br from-slate-900 via-slate-800 to-slate-900 flex flex-col items-center justify-center text-center px-4">
       {/* Animated background */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
@@ -15,7 +15,7 @@ export default function Home() {
       {/* Content */}
       <div className="relative z-10">
         <h1 className="text-6xl md:text-7xl font-bold text-white mb-4 drop-shadow-lg">
-          CAREER <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">QUEST</span>
+          CAREER <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-purple-500">QUEST</span>
         </h1>
         <p className="text-xl md:text-2xl text-gray-300 mb-12 drop-shadow-md max-w-2xl">
           Discover your perfect career path based on your traits and interests
