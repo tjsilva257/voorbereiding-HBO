@@ -2,14 +2,12 @@
 
 import Link from 'next/link'
 
-export default function Button() {
+export default function Button({ href = "/cards" }: { href?: string }) {
     return(
-        <div className="flex items-center justify-center min-h-screen">
-            <button className="bg-red-300 px-5 py-2 rounded-lg hover:scale-110 transition duration-75 ease-in-out text-4xl font-medium">Start</button>
-        <div>
-            <button className="bg-linear-to-bl from-violet-500 to-fuchsia-500 text-4xl font-medium px-7 py-3 rounded-lg ease-in-out hover:scale-110 focus:outline-2 focus:outline-offset-2 focus:outline-voilet-400 active:bg-gray-400 transition duration-500">
-                <Link href="">Start</Link>
+        <Link href={href}>
+            <button className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-8 py-3 rounded-lg font-semibold text-lg shadow-lg hover:shadow-xl hover:from-blue-600 hover:to-blue-700 hover:scale-110 transition-all duration-200 ease-in-out active:scale-95">
+                Start
             </button>
-        </div>
+        </Link>
     )
 }
