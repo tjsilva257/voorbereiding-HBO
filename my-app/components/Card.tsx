@@ -1,9 +1,17 @@
-export function Card() {
+interface CardProps {
+  trait: string;
+}
+
+export default function Card({ trait }: CardProps) {
   return (
-    <div>
-        <div className="bg-green-200 p-2 rounded-lg w-1/3 h-30">
-            hi
-        </div>
+    <div className="card">
+      <div className="card-top">
+        <p>{trait}</p>
+      </div>
+      <div className="card-divider"></div>
+      <div className="card-bottom">
+        <p>{trait}</p>
+      </div>
     </div>
   );
 }
