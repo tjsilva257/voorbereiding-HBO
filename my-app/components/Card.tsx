@@ -1,30 +1,57 @@
 'use client';
 
-import { useState } from 'react';
-
 interface CardProps {
   trait: string;
   onSelect?: (trait: string) => void;
+  selected?: boolean;
+  disabled?: boolean;
 }
 
-export default function Card({ trait, onSelect }: CardProps) {
-  const [selected, setSelected] = useState(false);
-
+export default function Card({ trait, onSelect, selected = false, disabled = false }: CardProps) {
   const handleClick = () => {
-    setSelected(!selected);
-    onSelect?.(trait);
+    if (!disabled) {
+      onSelect?.(trait);
+    }
   };
 
   return (
     <div
       onClick={handleClick}
-      className={`p-6 rounded-lg cursor-pointer transition-all duration-300 transform hover:scale-105 ${
-        selected
-          ? 'bg-blue-600 text-white shadow-lg scale-105'
-          : 'bg-gray-700 text-gray-100 hover:bg-gray-600'
-      }`}
+      className={`
+        relative w-32 h-48 rounded-lg cursor-pointer transition-all duration-300 transform
+        flex flex-col items-center justify-center p-4 text-center font-bold
+        border-2 shadow-2xl
+        ${disabled ? 'opacity-40 cursor-not-allowed' : 'hover:scale-110 hover:-translate-y-3'}
+        ${
+          selected
+            ? 'bg-white text-red-600 border-red-600 shadow-red-500/50 scale-105'
+            : 'bg-white text-red-600 border-gray-300 hover:border-red-500'
+        }
+      `}
     >
-      <h3 className="text-xl font-bold">{trait}</h3>
+      {/* Top Text */}
+      <div className="flex-1 flex items-center justify-center w-full px-2">
+        <p className="text-sm font-bold text-red-600 break-words line-clamp-3">
+          {trait}
+        </p>
+      </div>
+
+      {/* Center Line */}
+      <div className="w-4/5 h-0.5 bg-red-600 flex-shrink-0"></div>
+
+      {/* Bottom Text (Upside Down) */}
+      <div className="flex-1 flex items-center justify-center w-full px-2 transform rotate-180">
+        <p className="text-sm font-bold text-red-600 break-words line-clamp-3">
+          {trait}
+        </p>
+      </div>
+
+      {/* Selected Badge */}
+      {selected && (
+        <div className="absolute top-1 right-1 bg-blue-500 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center">
+          ✓
+        </div>
+      )}
     </div>
   );
 }
