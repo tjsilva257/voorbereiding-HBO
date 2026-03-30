@@ -15,7 +15,7 @@ export default function Home() {
       {/* Content */}
       <div className="relative z-10">
         <h1 className="text-6xl md:text-7xl font-bold text-white mb-4 drop-shadow-lg">
-          CAREER <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">QUEST</span>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">Educational Path</span>
         </h1>
         <p className="text-xl md:text-2xl text-gray-300 mb-12 drop-shadow-md max-w-2xl">
           Discover your perfect career path based on your traits and interests
