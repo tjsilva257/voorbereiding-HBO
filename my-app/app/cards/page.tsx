@@ -1,15 +1,15 @@
 'use client';
 
 import Card from '@/components/Card';
+import Modal from '@/components/Modal';
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
 
 export default function CardsPage() {
   const [traits, setTraits] = useState<string[]>([]);
   const [selectedTraits, setSelectedTraits] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const router = useRouter();
+  const [showModal, setShowModal] = useState(false);
   const MAX_TRAITS = 5;
 
   useEffect(() => {
@@ -34,16 +34,19 @@ export default function CardsPage() {
       if (prev.includes(trait)) {
         return prev.filter(t => t !== trait);
       } else if (prev.length < MAX_TRAITS) {
-        return [...prev, trait];
+        const updated = [...prev, trait];
+        // Show modal when 5 traits are selected
+        if (updated.length === MAX_TRAITS) {
+          setShowModal(true);
+        }
+        return updated;
       }
       return prev;
     });
   };
 
-  const handleFindMatch = () => {
-    if (selectedTraits.length > 0) {
-      router.push(`/results?traits=${selectedTraits.join(',')}`);
-    }
+  const handleCloseModal = () => {
+    setShowModal(false);
   };
 
   if (loading) {
@@ -72,19 +75,10 @@ export default function CardsPage() {
         ))}
       </div>
 
-      <div className="text-center">
-        <button 
-          onClick={handleFindMatch}
-          disabled={selectedTraits.length === 0}
-          className={`px-12 py-4 rounded-lg font-semibold text-lg transition-all duration-200 ${
-            selectedTraits.length === 0
-              ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
-              : 'bg-linear-to-r from-blue-500 to-purple-600 text-white hover:shadow-2xl hover:scale-105'
-          }`}
-        >
-          Find My Career Match
-        </button>
-      </div>
+      {/* Modal appears when 5 traits are selected */}
+      {showModal && (
+        <Modal selectedTraits={selectedTraits} onClose={handleCloseModal} />
+      )}
     </div>
   );
 }
