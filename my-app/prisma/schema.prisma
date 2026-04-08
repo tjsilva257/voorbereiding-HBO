@@ -7,29 +7,29 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model charactertrait {
+model CharacterTrait {
   id    Int     @id @default(autoincrement())
   name  String  @unique
-  studies charactertraittostudy[]
+  studies CharacterTraitToStudy[]
 
   @@map("charactertrait")
 }
 
-model study {
+model Study {
   id    Int     @id @default(autoincrement())
   name  String  @unique
   description String?
-  traits charactertraittostudy[]
+  traits CharacterTraitToStudy[]
 
   @@map("study")
 }
 
-model charactertraittostudy {
+model CharacterTraitToStudy {
   charactertraitId Int
   studyId Int
   
-  charactertrait charactertrait @relation(fields: [charactertraitId], references: [id], onDelete: Cascade)
-  study study @relation(fields: [studyId], references: [id], onDelete: Cascade)
+  charactertrait CharacterTrait @relation(fields: [charactertraitId], references: [id], onDelete: Cascade)
+  study Study @relation(fields: [studyId], references: [id], onDelete: Cascade)
 
   @@id([charactertraitId, studyId])
   @@map("charactertraittostudy")
