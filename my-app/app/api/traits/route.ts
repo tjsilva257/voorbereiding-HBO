@@ -4,7 +4,7 @@ const prisma = new PrismaClient();
 
 export async function GET() {
   try {
-    const traits = await prisma.charactertrait.findMany({
+    const traits = await prisma.characterTrait.findMany({
       select: {
         name: true,
       },
@@ -16,7 +16,7 @@ export async function GET() {
   } catch (error) {
     console.error('Error fetching traits:', error);
     return Response.json(
-      { traits: [], error: `Failed to fetch traits: ${error instanceof Error ? error.message : String(error)}` },
+      { traits: [], error: 'Failed to fetch traits from database' },
       { status: 500 }
     );
   } finally {

@@ -72,7 +72,7 @@ export default function ResultsPage() {
         onClick={() => router.push('/cards')}
         className="mb-8 text-blue-400 hover:text-blue-300 transition-colors text-lg"
       >
-        Back to Traits
+        ← Back to Traits
       </button>
 
       <h1 className="text-5xl font-bold text-white mb-4 text-center">Your Career Matches</h1>
@@ -82,13 +82,13 @@ export default function ResultsPage() {
       {selectedRecommendation && (
         <div className="mb-12 max-w-2xl mx-auto">
           <div className="bg-linear-to-r from-yellow-500 to-orange-500 rounded-xl p-8 shadow-2xl border-2 border-yellow-300">
-            <h2 className="text-2xl font-bold text-white mb-2">Your selection</h2>
+            <h2 className="text-2xl font-bold text-white mb-2">🎯 Recommended For You</h2>
             <p className="text-xl font-bold text-white mb-4">
               {selectedRecommendation}
             </p>
             {perfectMatches.length > 1 && (
               <p className="text-sm text-gray-100">
-                ({perfectMatches.length} perfect matches - recommended to you)
+                ({perfectMatches.length} perfect matches - randomly selected for you)
               </p>
             )}
           </div>
